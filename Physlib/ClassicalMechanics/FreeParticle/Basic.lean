@@ -1,5 +1,5 @@
 /-
-Copyright (c) 2025 Pranav Magdum. All rights reserved.
+Copyright (c) 2026 Pranav Magdum. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Pranav Magdum
 -/
@@ -15,7 +15,7 @@ at constant velocity.
 
 In this file, we work in a simple 1D coordinate system where position and velocity are functions
 of time with values in `ℝ`. This keeps things easy to reason about. A more complete treatment would
-use manifolds and tangent bundles, but that’s overkill here.
+use manifolds and tangent bundles.
 
 ## ii. Key results
 
