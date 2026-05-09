@@ -58,27 +58,66 @@ namespace ClassicalMechanics
 TODO "Make the documantation more descriptive"
 TODO "Prove momentum conservation"
 TODO "Prove the velocity_const_of_zero_acc lemma"
+/-- 
+A classical free particle with positive mass.
 
+A free particle is a mechanical system evolving in the absence of
+external forces. The dynamics are therefore entirely determined by
+Newton's second law with zero force.
+
+The only parameter of the system is the particle mass. The assumption
+that the mass is strictly positive is physically natural and is used
+throughout the development when simplifying the equation of motion.
+-/
 structure FreeParticle where
   mass : ℝ
   mass_pos : 0 < mass
 
 namespace FreeParticle
-
+/-- 
+A trajectory is a time-dependent position function describing the motion
+of the particle in one spatial dimension. Defining the trajectory.
+-/
 abbrev Trajectory := Time → ℝ
+/-- 
+The velocity of a trajectory at a given time.
 
+This is defined as the time derivative of the position function.
+-/
 noncomputable
 def velocity (s : FreeParticle) (q : Trajectory) (t : Time) : ℝ :=
   deriv q t
+
+/-- 
+The kinetic energy of the free particle along a trajectory.
+
+This is given by the classical expression `E = (1 / 2) m v²`,
+where `m` is the particle mass and `v` is the velocity.
+-/
 
 noncomputable
 def kineticEnergy (s : FreeParticle) (q : Trajectory) (t : Time) : ℝ :=
   (1 / 2) * s.mass * (s.velocity q t)^2
 
+/-- 
+Newton's second law for the free particle.
+
+Since no external forces act on the particle, Newton's second law
+reduces to the equation `m q'' = 0`, expressing that the acceleration
+vanishes identically.
+-/
+
 def NewtonsSecondLaw (s : FreeParticle) (q : Trajectory) (t : Time) : Prop :=
   s.mass * deriv (s.velocity q) t = 0
 
--- Step 1: get q'' = 0
+/-- 
+Newton's second law for a free particle implies that the acceleration
+vanishes identically.
+
+Since the particle mass is strictly positive, the equation
+`m q'' = 0` can be simplified to `q'' = 0` by cancelling the mass
+factor.
+-/
 lemma accel_zero
   (s : FreeParticle)
   (q : Trajectory)
@@ -89,7 +128,19 @@ lemma accel_zero
   have h1 := h t
   exact (mul_eq_zero.mp h1).resolve_left h₀
 
--- Step 2: velocity is constant 
+/-- 
+If the acceleration of a trajectory vanishes everywhere, then the
+velocity is constant.
+
+More precisely, if the second derivative of the trajectory is zero
+for all times, then there exists a constant `v₀` such that the
+velocity is equal to `v₀` at every time.
+
+The continuity assumption on `deriv q` is included to apply standard
+results from real analysis relating vanishing derivatives to constant
+functions.
+-/
+
 lemma velocity_const_of_zero_acc
   (q : ℝ → ℝ)
   (h : ∀ t, deriv (deriv q) t = 0)
@@ -98,7 +149,15 @@ lemma velocity_const_of_zero_acc
   -- this is a standard analysis result (can be proved later)
   sorry
 
--- Step 3: Energy conservation
+/-- 
+A free particle satisfying the equation of motion conserves kinetic energy.
+
+The proof follows the standard argument from classical mechanics:
+Newton's second law implies that the acceleration vanishes, which in
+turn implies that the velocity is constant. Since the kinetic energy
+depends only on the square of the velocity, it follows that the kinetic
+energy is constant in time.
+-/
 theorem kineticEnergy_conserved
   (s : FreeParticle)
   (q : Trajectory)
