@@ -55,9 +55,9 @@ Newton’s law → zero acceleration → constant velocity → constant energy.
 
 namespace ClassicalMechanics
 
-TODO "Make the documantation more descriptive"
-TODO "Prove momentum conservation"
-TODO "Prove the velocity_const_of_zero_acc lemma"
+
+TODO "Prove conservation of linear momentum for the free particle."
+
 /-- 
 A classical free particle with positive mass.
 
