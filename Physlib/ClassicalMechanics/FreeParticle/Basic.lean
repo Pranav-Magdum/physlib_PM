@@ -140,7 +140,7 @@ The continuity assumption on `deriv q` is included to apply standard
 results from real analysis relating vanishing derivatives to constant
 functions.
 -/
-
+[@sorryful]
 lemma velocity_const_of_zero_acc
   (q : ℝ → ℝ)
   (h : ∀ t, deriv (deriv q) t = 0)
@@ -168,10 +168,8 @@ theorem kineticEnergy_conserved
   -- get q'' = 0
   have h_acc : ∀ t, deriv (deriv q) t = 0 :=
     accel_zero s q h
-
   -- get constant velocity
   rcases velocity_const_of_zero_acc q h_acc hcont with ⟨v₀, hv⟩
-
   -- energy is constant
   have h_ke : ∀ t, s.kinetic_energy q t = (1 / 2) * s.mass * v₀^2 := by
     intro t
