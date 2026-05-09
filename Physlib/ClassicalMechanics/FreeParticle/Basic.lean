@@ -3,6 +3,11 @@ Copyright (c) 2026 Pranav Magdum. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Pranav Magdum
 -/
+module
+
+public import Mathlib.Data.Real.Basic
+public import Mathlib.Analysis.Calculus.Deriv.Basic
+public import Physlib.Meta.TODO.Basic
 
 /-!
 # The Free Particle
@@ -47,9 +52,7 @@ Newton’s law → zero acceleration → constant velocity → constant energy.
 
 
 -/
-import Mathlib.Data.Real.Basic
-import Mathlib.Analysis.Calculus.Deriv.Basic
-import Physlib.Meta.TODO.Basic
+
 namespace ClassicalMechanics
 
 TODO "Make the documantation more descriptive"
