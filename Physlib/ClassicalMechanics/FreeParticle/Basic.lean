@@ -8,7 +8,7 @@ module
 public import Mathlib.Data.Real.Basic
 public import Mathlib.Analysis.Calculus.Deriv.Basic
 public import Physlib.Meta.TODO.Basic
-
+public import Physlib.SpaceAndTime.Time.Basic
 /-!
 # The Free Particle
 
@@ -65,7 +65,6 @@ structure FreeParticle where
 
 namespace FreeParticle
 
-abbrev Time := ℝ
 abbrev Trajectory := Time → ℝ
 
 noncomputable
