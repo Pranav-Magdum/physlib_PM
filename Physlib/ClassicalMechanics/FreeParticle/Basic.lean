@@ -45,8 +45,6 @@ Newton’s law → zero acceleration → constant velocity → constant energy.
 
 ## iv. References
 
-- Landau & Lifshitz, *Mechanics*
-- Goldstein, *Classical Mechanics*
 
 -/
 import Mathlib.Data.Real.Basic
