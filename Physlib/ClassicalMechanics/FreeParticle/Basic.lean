@@ -72,7 +72,7 @@ def velocity (s : FreeParticle) (q : Trajectory) (t : Time) : ℝ :=
   deriv q t
 
 noncomputable
-def kinetic_energy (s : FreeParticle) (q : Trajectory) (t : Time) : ℝ :=
+def kineticEnergy (s : FreeParticle) (q : Trajectory) (t : Time) : ℝ :=
   (1 / 2) * s.mass * (s.velocity q t)^2
 
 def NewtonsSecondLaw (s : FreeParticle) (q : Trajectory) (t : Time) : Prop :=
@@ -99,7 +99,7 @@ lemma velocity_const_of_zero_acc
   sorry
 
 -- Step 3: Energy conservation
-theorem Energy_is_Conserved
+theorem kineticEnergy_conserved
   (s : FreeParticle)
   (q : Trajectory)
   (h : ∀ t, s.NewtonsSecondLaw q t)
