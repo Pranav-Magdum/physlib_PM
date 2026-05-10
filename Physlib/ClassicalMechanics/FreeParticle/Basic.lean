@@ -76,23 +76,21 @@ The mass of the free particle.
 This parameter determines the inertial response of the particle in
 Newton's second law.
 -/
-
   mass : ℝ
   mass_pos : 0 < mass
 
 namespace FreeParticle
+
 /-- 
 A trajectory is a time-dependent position function describing the motion
 of the particle in one spatial dimension. Defining the trajectory.
 -/
-
 abbrev Trajectory := Time → ℝ
 
 /-- 
 The velocity of a trajectory at a given time.
 This is defined as the time derivative of the position function.
 -/
-
 noncomputable
 def velocity (s : FreeParticle) (q : Trajectory) (t : Time) : ℝ :=
   deriv q t
@@ -103,7 +101,6 @@ The kinetic energy of the free particle along a trajectory.
 This is given by the classical expression `E = (1 / 2) m v²`,
 where `m` is the particle mass and `v` is the velocity.
 -/
-
 noncomputable
 def kineticEnergy (s : FreeParticle) (q : Trajectory) (t : Time) : ℝ :=
   (1 / 2) * s.mass * (s.velocity q t)^2
