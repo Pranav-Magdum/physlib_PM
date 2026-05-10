@@ -140,7 +140,7 @@ The continuity assumption on `deriv q` is included to apply standard
 results from real analysis relating vanishing derivatives to constant
 functions.
 -/
-[@sorryful]
+@[sorryful]
 lemma velocity_const_of_zero_acc
   (q : ℝ → ℝ)
   (h : ∀ t, deriv (deriv q) t = 0)
