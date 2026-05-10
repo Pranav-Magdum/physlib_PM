@@ -70,6 +70,13 @@ that the mass is strictly positive is physically natural and is used
 throughout the development when simplifying the equation of motion.
 -/
 structure FreeParticle where
+/-- 
+The mass of the free particle.
+
+This parameter determines the inertial response of the particle in
+Newton's second law.
+-/
+
   mass : ℝ
   mass_pos : 0 < mass
 
