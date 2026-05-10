@@ -85,12 +85,14 @@ namespace FreeParticle
 A trajectory is a time-dependent position function describing the motion
 of the particle in one spatial dimension. Defining the trajectory.
 -/
+
 abbrev Trajectory := Time → ℝ
+
 /-- 
 The velocity of a trajectory at a given time.
-
 This is defined as the time derivative of the position function.
 -/
+
 noncomputable
 def velocity (s : FreeParticle) (q : Trajectory) (t : Time) : ℝ :=
   deriv q t
@@ -113,7 +115,6 @@ Since no external forces act on the particle, Newton's second law
 reduces to the equation `m q'' = 0`, expressing that the acceleration
 vanishes identically.
 -/
-
 def NewtonsSecondLaw (s : FreeParticle) (q : Trajectory) (t : Time) : Prop :=
   s.mass * deriv (s.velocity q) t = 0
 
