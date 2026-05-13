@@ -2,9 +2,9 @@ module
 
 public import Physlib.ClassicalFieldTheory.Local.Variation
 public import Physlib.ClassicalMechanics.Basic
-public import Physlib.ClassicalMechanics.FreeParticle.Basic
 public import Physlib.ClassicalMechanics.DampedHarmonicOscillator.Basic
 public import Physlib.ClassicalMechanics.EulerLagrange
+public import Physlib.ClassicalMechanics.FreeParticle.Basic
 public import Physlib.ClassicalMechanics.HamiltonsEquations
 public import Physlib.ClassicalMechanics.HarmonicOscillator.Basic
 public import Physlib.ClassicalMechanics.HarmonicOscillator.ConfigurationSpace
