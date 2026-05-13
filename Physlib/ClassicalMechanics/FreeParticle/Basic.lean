@@ -124,14 +124,14 @@ Since the particle mass is strictly positive, the equation
 factor.
 -/
 lemma accel_zero
-  (s : FreeParticle)
-  (q : Trajectory)
-  (h : ∀ t, s.NewtonsSecondLaw q t) :
-  ∀ t, deriv (deriv q) t = 0 := by
-  intro t
-  have h₀ : s.mass ≠ 0 := ne_of_gt s.mass_pos
-  have h1 := h t
-  exact (mul_eq_zero.mp h1).resolve_left h₀
+    (s : FreeParticle)
+    (q : Trajectory)
+    (h : ∀ t, s.NewtonsSecondLaw q t) :
+    ∀ t, deriv (deriv q) t = 0 := by
+    intro t
+    have h₀ : s.mass ≠ 0 := ne_of_gt s.mass_pos
+    have h1 := h t
+    exact (mul_eq_zero.mp h1).resolve_left h₀
 
 /-- 
 If the acceleration of a trajectory vanishes everywhere, then the
@@ -147,14 +147,14 @@ functions.
 -/
 @[sorryful]
 lemma velocity_const_of_zero_acc
-  (q : ℝ → ℝ)
-  (h : ∀ t, deriv (deriv q) t = 0)
-  (hcont : Continuous (deriv q)) :
-  ∃ v₀, ∀ t, deriv q t = v₀ := by
-  -- this is a standard analysis result (can be proved later)
-  sorry
+    (q : ℝ → ℝ)
+    (h : ∀ t, deriv (deriv q) t = 0)
+    (hcont : Continuous (deriv q)) :
+    ∃ v₀, ∀ t, deriv q t = v₀ := by
+    -- this is a standard analysis result (can be proved later)
+    sorry
 
-/-- 
+/--
 A free particle satisfying the equation of motion conserves kinetic energy.
 
 The proof follows the standard argument from classical mechanics:
@@ -164,24 +164,24 @@ depends only on the square of the velocity, it follows that the kinetic
 energy is constant in time.
 -/
 theorem kineticEnergy_conserved
-  (s : FreeParticle)
-  (q : Trajectory)
-  (h : ∀ t, s.NewtonsSecondLaw q t)
-  (hcont : Continuous (deriv q)) :
-  ∃ E, ∀ t, s.kinetic_energy q t = E := by
+    (s : FreeParticle)
+    (q : Trajectory)
+    (h : ∀ t, s.NewtonsSecondLaw q t)
+    (hcont : Continuous (deriv q)) :
+    ∃ E, ∀ t, s.kinetic_energy q t = E := by
 
-  -- get q'' = 0
-  have h_acc : ∀ t, deriv (deriv q) t = 0 :=
+    -- get q'' = 0
+    have h_acc : ∀ t, deriv (deriv q) t = 0 :=
     accel_zero s q h
-  -- get constant velocity
-  rcases velocity_const_of_zero_acc q h_acc hcont with ⟨v₀, hv⟩
-  -- energy is constant
-  have h_ke : ∀ t, s.kinetic_energy q t = (1 / 2) * s.mass * v₀^2 := by
+    -- get constant velocity
+    rcases velocity_const_of_zero_acc q h_acc hcont with ⟨v₀, hv⟩
+    -- energy is constant
+    have h_ke : ∀ t, s.kinetic_energy q t = (1 / 2) * s.mass * v₀^2 := by
     intro t
     unfold kinetic_energy velocity
     rw [hv t]
 
-  exact ⟨(1 / 2) * s.mass * v₀^2, h_ke⟩
+    exact ⟨(1 / 2) * s.mass * v₀^2, h_ke⟩
 
 end FreeParticle
 end ClassicalMechanics
