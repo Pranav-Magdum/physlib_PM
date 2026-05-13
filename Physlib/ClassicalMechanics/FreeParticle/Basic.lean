@@ -54,6 +54,8 @@ Newton’s law → zero acceleration → constant velocity → constant energy.
 
 -/
 
+@[expose] public section
+
 namespace ClassicalMechanics
 
 open Time
@@ -150,7 +152,6 @@ lemma velocity_const_of_zero_acc (q : Time → ℝ) (h : ∀ t, deriv (deriv q) 
     (hcont : ContDiff ℝ 1 q) : ∃ v₀, ∀ t, deriv q t = v₀ := by
   -- this is a standard analysis result (related to `is_const_of_fderiv_eq_zero`)
   sorry
-
 /--
 A free particle satisfying the equation of motion conserves kinetic energy.
 
@@ -160,6 +161,7 @@ turn implies that the velocity is constant. Since the kinetic energy
 depends only on the square of the velocity, it follows that the kinetic
 energy is constant in time.
 -/
+@[sorryful]
 theorem kineticEnergy_conserved (s : FreeParticle) (q : Trajectory)
     (h : ∀ t, s.NewtonsSecondLaw q t) (hcont : ContDiff ℝ 1 q) :
     ∃ E, ∀ t, s.kineticEnergy q t = E := by
